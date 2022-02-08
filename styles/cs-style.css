@@ -1,0 +1,84 @@
+.white-popup-block {
+    background: #FFF;
+    padding: 20px 30px;
+    text-align: left;
+    max-width: 500px;
+    margin: 40px auto;
+    position: relative;
+}
+.mfp-close {
+    width: 44px;
+    height: 44px;
+    line-height: 44px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    text-decoration: none;
+    text-align: center;
+    opacity: .65;
+    filter: alpha(opacity=65);
+    padding: 0 0 18px 10px;
+    color: #FFF;
+    font-style: normal;
+    font-size: 28px;
+}
+#country-selector-popup .form-fields {
+    display: inline-block;
+    width: 100%;
+    position: relative;
+}
+#country-selector-popup .form-fields .form-field {
+    float: left;
+}
+#country-selector-popup .form-fields .cs-country-wrapper {
+    width: 80%;
+}
+#country-selector-popup .form-fields .cs-button-wrapper {
+    width: 20%;
+    text-align: right;
+}
+#country-selector-popup .chosen-container-single {
+    width: 100%;
+}
+#country-selector-popup .chosen-container-single > a.chosen-single {
+    padding: 5px 10px;
+    min-height: 40px;
+}
+#country-selector-popup .form-fields .cs-button-wrapper .cs-button {
+    padding: 7px 20px;
+    background-color: #000;
+    color: #fff;
+}
+.cs-loader {
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0%;
+    left: 0%;
+    background-color: #eeeeee59;
+    z-index: 1;
+}
+.cs-loader > img {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.cs-error {
+    color: red;
+    font-size: 14px;
+}
+.loader-text {
+    position: relative;
+    top: 30%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    display: block;
+    text-align: center;
+    font-weight: bold;
+}
