@@ -1,12 +1,13 @@
 === Country Selector ===
-Contributors: https://github.com/chandresh0966/
-Tags: country, redirect, geolocation, country redirector, location popup
-Requires at least: 5.6
-Tested up to: 6.6
-Stable tag: 1.0
-Requires PHP: 7.0
-License: GPLv3 or later
-License URI: https://www.gnu.org/licenses/gpl-3.0.html
+
+* Contributors: https://github.com/chandresh0966/
+* Tags: country, redirect, geolocation, country redirector, location popup
+* Requires at least: 5.6
+* Tested up to: 6.6
+* Stable tag: 1.0
+* Requires PHP: 7.0
+* License: GPLv3 or later
+* License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 Country Selector lets site owners show a country selection popup and redirect visitors to country-specific URLs.
 
