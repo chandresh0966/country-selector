@@ -27,7 +27,10 @@
                     jQuery.ajax({
                         url: custom_vars.ajax_url+"?action=delete_country_redirect_url",
                         type:"POST",
-                        data:{ cr_id : cr_id },
+                        data:{
+                            cr_id : cr_id,
+                            security: custom_vars.delete_nonce
+                        },
                         success:function(response){
                             
                             alert(response.message);

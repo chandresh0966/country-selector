@@ -33,7 +33,7 @@
         $errors = array();
         if( isset($_POST['cs_settings']) && !wp_verify_nonce($_REQUEST['cs_settings'], 'cs-settings-save')){
         	$_SESSION['errors'] = array(__("Unauthorized request.", 'cs-settings-save'));
-        	wp_redirect(admin_url('admin.php?page=cs-config'));
+            wp_redirect(admin_url('admin.php?page=country-selector-config'));
         	die();
         }
         $popup_enable = isset($_POST['cs_popup_enable']) ? sanitize_text_field($_POST['cs_popup_enable']) : '';
@@ -47,7 +47,7 @@
         }
         if(!empty($errors)) {
         	$_SESSION['errors'] = $errors;
-        	wp_redirect(admin_url('admin.php?page=cs-config'));
+            wp_redirect(admin_url('admin.php?page=country-selector-config'));
         	die();
         }
 
@@ -99,7 +99,17 @@
     function country_selector_get_country_redirect($cr_id) {
         global $wpdb;
 
-        return $wpdb->get_row( $wpdb->prepare( "SELECT * FROM ".$wpdb->prefix."cs_country_redirect WHERE id = ".$cr_id ) );
+        $cr_id = absint($cr_id);
+        if ( ! $cr_id ) {
+            return null;
+        }
+
+        return $wpdb->get_row(
+            $wpdb->prepare(
+                "SELECT * FROM {$wpdb->prefix}cs_country_redirect WHERE id = %d",
+                $cr_id
+            )
+        );
     }
 
     add_action('wp_footer', 'show_cs_redirect_popup'); 

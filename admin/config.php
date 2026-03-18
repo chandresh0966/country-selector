@@ -8,7 +8,10 @@
 	    wp_enqueue_script( 'cntsel-script', CNTSEL_PLUGIN_DIR_URL . 'admin/scripts/cs-admin.js', array('jquery'), CNTSEL_VERSION );
 	    wp_enqueue_script( 'cntsel-chosen', CNTSEL_PLUGIN_DIR_URL . 'common/scripts/chosen.jquery.min.js', array(), CNTSEL_VERSION );
 
-	    $custom_vars = array('ajax_url' => admin_url( 'admin-ajax.php' ));
+	    $custom_vars = array(
+	    	'ajax_url' => admin_url( 'admin-ajax.php' ),
+	    	'delete_nonce' => wp_create_nonce( 'cs_delete_country_redirect' ),
+	    );
 	    wp_localize_script( 'cntsel-script', 'custom_vars', $custom_vars );
 	}
 
@@ -159,7 +162,21 @@
     <?php }
 
     function remove_country_redirect_url() {
-    	$cr_id = isset($_POST['cr_id']) ? sanitize_text_field($_POST['cr_id']) : '';
+	    if ( ! current_user_can( 'manage_options' ) ) {
+	    	wp_send_json(array(
+	    		'success' => false,
+	    		'message' => esc_html__( 'You are not allowed to perform this action.', 'country-selector' ),
+	    	));
+	    }
+
+	    if ( ! check_ajax_referer( 'cs_delete_country_redirect', 'security', false ) ) {
+	    	wp_send_json(array(
+	    		'success' => false,
+	    		'message' => esc_html__( 'Invalid security token.', 'country-selector' ),
+	    	));
+	    }
+
+	    $cr_id = isset($_POST['cr_id']) ? absint($_POST['cr_id']) : 0;
 
     	$response = array();
     	if(empty($cr_id)) {
